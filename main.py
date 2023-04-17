@@ -4,6 +4,12 @@ import redis
 import datetime
 
 app = Flask(__name__)
+
+#RUTA DE HOME
+@app.route('/', methods=['GET', 'POST'])
+def home():
+   return "HELLO from vercel use flask"
+
 #CUANDO RECIBAMOS LAS PETICIONES EN ESTA RUTA
 @app.route("/webhook/", methods=["POST", "GET"])
 def webhook_whatsapp():
