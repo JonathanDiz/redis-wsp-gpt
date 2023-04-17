@@ -1,6 +1,7 @@
 #ChatBot inteligente con WhatsApp en Python
 from flask import Flask, jsonify, request
 import redis
+import datetime
 
 app = Flask(__name__)
 #CUANDO RECIBAMOS LAS PETICIONES EN ESTA RUTA
@@ -47,12 +48,12 @@ def webhook_whatsapp():
 
       #CONFIGURACION REGISTRO REDIS
       id = 1
-      fecha_hora = "2023-04-15T12:00:00"
+      fecha_hora = datetime.datetime.now().date() + " " + datetime.datetime.now().time()
       mensaje_recibido = "Mensaje recibido"
       mensaje_enviado = "Mensaje enviado"
-      id_wsp = "id_wsp"
-      timestamp_wsp = 123456
-      telefono_wsp = "1234567890"
+      id_wsp = idWA
+      timestamp_wsp = timestamp
+      telefono_wsp = telefonoCliente
 
       redis_conn.hset("registro:" + str(id), "id", id)
       redis_conn.hset("registro:" + str(id), "fecha_hora", fecha_hora)
