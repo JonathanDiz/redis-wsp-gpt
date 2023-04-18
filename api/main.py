@@ -4,7 +4,7 @@ import redis
 app = Flask(__name__)
 
 # CONECTAMOS A REDIS
-redis_db = redis.StrictRedis(host='localhost', port=6379, db=0)
+redis_db = redis.StrictRedis(host= app.env.REDIS_HOST, port=app.env.REDIS_PORT, db=0)
 
 @app.route('/')
 def home():
@@ -64,9 +64,22 @@ def webhook_whatsapp():
           # Actualizamos la cantidad
           cantidad = int(cantidad) + 1
           redis_db.set(idWA, cantidad)
-          
+          enviar(telefonoCliente,respuesta)
       #RETORNAMOS EL STATUS EN UN JSON
       return jsonify({"status": "success"}, 200)
+        
+def enviar(telefonoRecibe,respuesta):
+  from heyoo import WhatsApp
+  #TOKEN DE ACCESO DE FACEBOOK
+  token='EAAXhmhRGCZBABAHIptInyXRLZBEwHymOPQhIhrmzZA4t6AjzQFoCN5CMgZBTNzZBdgfGbFQ5QW1WZBmu7LqyBtKWjlZBHp3XIUqKvGtZAwmt89NYBrDwiSU4uDF3ZAU1T54MapuiF7n1rv6AxTX4TK7wniYMMT4wj6yXhGWZAu1Lu25G9jGxRBnSyP39ett0vG7XAlvPWJTZBGadmbvnc8ZAmvPjjOeXZB7FSkkEZD'
+  #IDENTIFICADOR DE NÚMERO DE TELÉFONO
+  idNumeroTeléfono='120529374341492'
+  #INICIALIZAMOS ENVIO DE MENSAJES
+  mensajeWa=WhatsApp(token,idNumeroTeléfono)
+  telefonoRecibe=telefonoRecibe.replace("569","56")
+  #ENVIAMOS UN MENSAJE DE TEXTO
+  mensajeWa.send_message(respuesta,telefonoRecibe)
+
 
 #INICIAMSO FLASK
 if __name__ == "__main__":
