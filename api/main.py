@@ -44,21 +44,21 @@ def webhook_whatsapp():
     #EXTRAEMOS EL NUMERO DE TELEFONO Y EL MANSAJE
     telefonoCliente=data['entry'][0]['changes'][0]['value']['messages'][0]['from']
     #EXTRAEMOS EL TELEFONO DEL CLIENTE
-    mensaje=data['entry'][0]['changes'][0]['value']['messages'][0]['text']['body']
+    mensaje_data=data['entry'][0]['changes'][0]['value']['messages'][0]['text']['body']
     #EXTRAEMOS EL ID DE WHATSAPP DEL ARRAY
     idWA=data['entry'][0]['changes'][0]['value']['messages'][0]['id']
     #EXTRAEMOS EL TIEMPO DE WHATSAPP DEL ARRAY
     timestamp=data['entry'][0]['changes'][0]['value']['messages'][0]['timestamp']
     #ESCRIBIMOS EL NUMERO DE TELEFONO Y EL MENSAJE EN EL ARCHIVO TEXTO
     #SI HAY UN MENSAJE
-    if mensaje is not None:
+    if mensaje_data is not None:
       from rivescript import RiveScript
       #INICIALIZAMOS RIVESCRIPT Y CARGAMOS LA CONVERSACION
       bot = RiveScript()
       bot.load_file('restaurante.rive')
       bot.sort_replies()
       #OBTENEMOS LA RESPUESTA
-      respuesta= bot.reply("localuser", mensaje)
+      respuesta= bot.reply("localuser", mensaje_data)
       respuesta= respuesta.replace("\\n", "\\\n")
       respuesta= respuesta.replace("\\","")
 
@@ -87,7 +87,7 @@ def webhook_whatsapp():
       redis_conn.hset("registro:" + str(id), "telefono_wsp", telefono_wsp)
 
       f = open("texto.txt", "w")
-      f.write(mensaje)
+      f.write(mensaje_data + "\n")
       f.close()
       #RETORNAMOS EL STATUS EN UN JSON
       return jsonify({"status": "success"}, 200)
