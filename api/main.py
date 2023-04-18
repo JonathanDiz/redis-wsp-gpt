@@ -4,12 +4,6 @@ import os
 
 app = Flask(__name__)
 
-REDIS_HOST = os.environ.get('REDIS_HOST')
-REDIS_PORT = os.environ.get('REDIS_PORT')
-
-# CONECTAMOS A REDIS
-redis_db = redis.StrictRedis(host=REDIS_HOST, port=REDIS_PORT, db=0)
-
 @app.route('/')
 def home():
     return 'Bienvenidos a Wyrus WSP Bots'
@@ -50,21 +44,35 @@ def webhook_whatsapp():
       respuesta=respuesta.replace("\\n","\\\n")
       respuesta=respuesta.replace("\\","")
       
-      # AÑADIMOS LOS DATOS A REDIS
-      cantidad = redis_db.get(idWA)
-      if cantidad is None:
-          redis_db.set(idWA, 1)
-          
-          # Insertamos los datos en Redis
-          redis_db.hmset(idWA, {'mensaje_recibido': mensaje, 'mensaje_enviado': respuesta, 'id_wa': idWA, 'timestamp_wa': timestamp, 'telefono_wa': telefonoCliente})
+    REDIS_HOST = os.environ.get('REDIS_HOST')
+    REDIS_PORT = os.environ.get('REDIS_PORT')
+    REDIS_PASSWORD = os.environ.get('REDIS_PASSWORD')
 
-      else:
+    # CONECTAMOS A REDIS
+    redis_db = redis.StrictRedis(host=REDIS_HOST, port=REDIS_PORT, password=REDIS_PASSWORD, db=0, decode_responser=True)
+
+
+    # AÑADIMOS LOS DATOS A REDIS
+    cantidad = redis_db.get(idWA)
+    if cantidad is None:
+        redis_db.set(idWA, 1)
+        
+          
+
+        # Insertamos los datos en Redis
+        redis_db.hset(idWA, "mensaje_recibido", mensaje)
+        redis_db.hset(idWA, "mensaje_enviado", respuesta)
+        redis_db.hset(idWA, "id_wa", idWA)
+        redis_db.hset(idWA, "timestamp_wa", timestamp)
+        redis_db.hset(idWA, "telefono_wa", telefonoCliente)
+  
+    else:
           # Actualizamos la cantidad
           cantidad = int(cantidad) + 1
           redis_db.set(idWA, cantidad)
           enviar(telefonoCliente,respuesta)
-      #RETORNAMOS EL STATUS EN UN JSON
-      return jsonify({"status": "success"}, 200)
+    #RETORNAMOS EL STATUS EN UN JSON
+    return jsonify({"status": "success"}, 200)
         
 def enviar(telefonoRecibe,respuesta):
   from heyoo import WhatsApp
