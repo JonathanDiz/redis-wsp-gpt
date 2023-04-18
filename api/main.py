@@ -71,9 +71,9 @@ def webhook_whatsapp():
 def enviar(telefonoRecibe,respuesta):
   from heyoo import WhatsApp
   #TOKEN DE ACCESO DE FACEBOOK
-  token=app.env['TOKEN'].replace('')
+  token=app.env['TOKEN']
   #IDENTIFICADOR DE NÚMERO DE TELÉFONO
-  idNumeroTeléfono=app.env['ID_NUMERO_TELEFONO'].replace('')
+  idNumeroTeléfono=app.env['ID_NUMERO_TELEFONO']
   #INICIALIZAMOS ENVIO DE MENSAJES
   mensajeWa=WhatsApp(token,idNumeroTeléfono)
   telefonoRecibe=telefonoRecibe.replace("569","56")
