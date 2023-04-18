@@ -1,0 +1,22 @@
+// Agendar Citas Médicas
+
++ hola
+- Hola! ¿En qué puedo ayudarte hoy?
+
++ quiero agendar una cita médica
+- ¡Claro! ¿Qué tipo de especialidad necesitas?
+
++ [odontología|pediatría|cardiología]
+- ¿Para cuándo necesitas la cita?
+
++ [*] para mañana [*]
+- Lo siento, no tenemos citas disponibles para mañana. ¿Podrías proporcionarme otra fecha?
+
++ [*] para el [lunes|martes|miércoles|jueves|viernes|sábado|domingo] [*]
+- Perfecto, tenemos una cita disponible para el {^day}. ¿A qué hora prefieres la cita?
+
++ [*] a las [*]
+- Excelente, tu cita está agendada para el {^day} a las {^time}. ¿Hay algo más en lo que pueda ayudarte?
+
++ no, eso es todo
+- Genial, ¡nos vemos pronto en tu cita médica! ¡Que tengas un buen día!

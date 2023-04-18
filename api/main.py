@@ -1,14 +1,31 @@
 #ChatBot inteligente con WhatsApp en Python
 from flask import Flask, jsonify, request
+from twilio.twiml.messaging_response import MessagingResponse
 import redis
 import datetime
 
 app = Flask(__name__)
 
+r = redis.Redis(host='localhost', port=6379, db=0)
+
+respuesta = MessagingResponse()
+respuesta.message(request.form.get("Body"))
+mensaje_enviado = respuesta.to_xml().decode("utf-8")
+r.hset("whatsapp_mensajes", "mensaje_enviado", mensaje_enviado)
+
+
 #RUTA DE HOME
 @app.route('/', methods=['GET', 'POST'])
 def home():
    return "HELLO from vercel use flask"
+
+#RUTA DE MENSAJES DE WHATSAPP
+@app.route("/whatsapp", methods=["POST"])
+def recibir_mensaje():
+    mensaje = request.form.get("Body")
+    # Aquí se puede hacer lo que se desee con el mensaje recibido
+    return str(respuesta)
+
 
 #CUANDO RECIBAMOS LAS PETICIONES EN ESTA RUTA
 @app.route("/webhook/", methods=["POST", "GET"])
@@ -55,8 +72,8 @@ def webhook_whatsapp():
       #CONFIGURACION REGISTRO REDIS
       id = 1
       fecha_hora = datetime.datetime.now().date() + " " + datetime.datetime.now().time()
-      mensaje_recibido = "Mensaje recibido"
-      mensaje_enviado = "Mensaje enviado"
+      mensaje_recibido = recibir_mensaje.mensaje.replace("\n", "\\")
+      mensaje_enviado = mensaje_enviado
       id_wsp = idWA
       timestamp_wsp = timestamp
       telefono_wsp = telefonoCliente

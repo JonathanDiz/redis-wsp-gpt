@@ -1,0 +1,77 @@
+! version = 2.0
+
+//Saludos
++ hola
+- Hola, ¿cómo estás?
+
++ buenos dias
+- Buenos días, ¿en qué puedo ayudarte?
+
++ buenas tardes
+- Buenas tardes, ¿cómo puedo ayudarte?
+
++ buenas noches
+- Buenas noches, ¿en qué puedo ayudarte?
+
+//Preguntas generales sobre salud mental
++ ¿Qué es la salud mental?
+- La salud mental se refiere a nuestro bienestar psicológico y emocional, incluyendo la manera en que pensamos, sentimos y nos comportamos.
+
++ ¿Qué es un trastorno mental?
+- Un trastorno mental es una condición que afecta la forma en que una persona piensa, siente y se comporta, lo que puede causar angustia y afectar su capacidad para funcionar en la vida diaria.
+
++ ¿Cómo puedo cuidar mi salud mental?
+- Algunas formas de cuidar tu salud mental incluyen hacer ejercicio, dormir lo suficiente, comer bien, pasar tiempo al aire libre, mantener conexiones sociales y buscar apoyo profesional si lo necesitas.
+
++ ¿Cuáles son algunos signos de problemas de salud mental?
+- Algunos signos de problemas de salud mental pueden incluir cambios en el estado de ánimo, cambios en los patrones de sueño, cambios en la energía y motivación, problemas para concentrarse, y cambios en los patrones de alimentación.
+
++ ¿Cómo puedo saber si necesito ayuda profesional para mi salud mental?
+- Si estás experimentando problemas persistentes en tu vida diaria, como dificultad para realizar tareas o mantener relaciones, o si estás experimentando síntomas físicos inexplicables, puede ser útil buscar ayuda profesional.
+
+//Depresión
++ ¿Qué es la depresión?
+- La depresión es un trastorno del estado de ánimo que se caracteriza por sentimientos de tristeza, pérdida de interés en actividades que solían ser placenteras, cambios en los patrones de sueño y alimentación, y problemas para concentrarse.
+
++ ¿Cómo se trata la depresión?
+- El tratamiento para la depresión puede incluir terapia, medicamentos y cambios en el estilo de vida, como hacer ejercicio regularmente y mantener una dieta saludable.
+
++ ¿Cuáles son algunos signos de depresión en los adolescentes?
+- Algunos signos de depresión en los adolescentes pueden incluir cambios en el estado de ánimo, pérdida de interés en actividades que solían ser placenteras, problemas para dormir o dormir demasiado, irritabilidad y aislamiento social.
+
+//Ansiedad
++ ¿Qué es la ansiedad?
+- La ansiedad es una respuesta emocional normal a situaciones estresantes, pero cuando la ansiedad es persistente y abrumadora, puede interferir con la vida diaria.
+
++ ¿Cómo se trata la ansiedad?
+- El tratamiento para la ansiedad puede incluir terapia, medicamentos y técnicas de relajación, como la meditación y la respiración profunda.
+
++ ¿Cuáles son algunos signos de un trastorno de ansiedad?
+- Algunos signos de un trastorno de ansiedad pueden incluir preocupación constante, problemas para dormir, irritabilidad, tensión muscular, sudoración excesiva y ataques de pánico.
+
+//Trastornos alimentarios
++ ¿Qué son los trastornos alimentarios?
+- Los trastornos alimentarios son problemas de salud mental que se caracterizan por patrones anormales de alimentación y preocupaciones excesivas sobre el peso y la forma corporal.
+
++ ¿Cuáles son algunos ejemplos de trastornos alimentarios?
+- Algunos ejemplos de trastornos alimentarios incluyen la anorexia nerviosa, la bulimia nerviosa y el trastorno por atracón.
+
++ ¿Cómo se tratan los trastornos alimentarios?
+- El tratamiento para los trastornos alimentarios puede incluir terapia, medicamentos y trabajo con un equipo de profesionales de la salud mental y la nutrición.
+
+//Autocuidado
++ ¿Qué es el autocuidado?
+- El autocuidado se refiere a las acciones que tomamos para mantener nuestro bienestar físico, emocional y mental, como hacer ejercicio, dormir lo suficiente y buscar apoyo cuando lo necesitamos.
+
++ ¿Cómo puedo practicar el autocuidado?
+- Algunas formas de practicar el autocuidado incluyen hacer ejercicio regularmente, comer una dieta saludable, dormir lo suficiente, mantener conexiones sociales y buscar apoyo profesional si lo necesitas.
+
+//Terapia
++ ¿Qué es la terapia?
+- La terapia es un tratamiento para problemas de salud mental que implica hablar con un profesional de la salud mental, como un psicólogo o un terapeuta, para explorar problemas y desarrollar estrategias para afrontarlos.
+
++ ¿Cuáles son algunos tipos de terapia?
+- Algunos tipos de terapia incluyen la terapia cognitivo-conductual, la terapia psicodinámica y la terapia interpersonal.
+
++ ¿Cómo puedo encontrar un terapeuta?
+- Puedes encontrar un terapeuta buscando en línea, preguntando a amigos y familiares si tienen recomendaciones, o hablando con tu médico de atención primaria para obtener una referencia.
