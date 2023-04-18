@@ -19,14 +19,6 @@ r.hset("whatsapp_mensajes", "mensaje_enviado", mensaje_enviado)
 def home():
    return "HELLO from vercel use flask"
 
-#RUTA DE MENSAJES DE WHATSAPP
-@app.route("/whatsapp", methods=["POST"])
-def recibir_mensaje():
-    mensaje = request.form.get("Body")
-    # Aquí se puede hacer lo que se desee con el mensaje recibido
-    return str(respuesta)
-
-
 #CUANDO RECIBAMOS LAS PETICIONES EN ESTA RUTA
 @app.route("/webhook/", methods=["POST", "GET"])
 def webhook_whatsapp():
@@ -72,8 +64,8 @@ def webhook_whatsapp():
       #CONFIGURACION REGISTRO REDIS
       id = 1
       fecha_hora = datetime.datetime.now().date() + " " + datetime.datetime.now().time()
-      mensaje_recibido = recibir_mensaje.mensaje.replace("\n", "\\")
-      mensaje_enviado = mensaje_enviado
+      mensaje_recibido = mensaje_data.replace("\n", "\\n")
+      mensaje_enviado = respuesta.replace("\\n", "\\\n")
       id_wsp = idWA
       timestamp_wsp = timestamp
       telefono_wsp = telefonoCliente
