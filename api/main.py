@@ -6,6 +6,11 @@ app = Flask(__name__)
 # CONECTAMOS A REDIS
 redis_db = redis.StrictRedis(host='localhost', port=6379, db=0)
 
+@app.route('/')
+def home():
+    return 'Bienvenidos a Wyrus WSP Bots'
+
+
 #CUANDO RECIBAMOS LAS PETICIONES EN ESTA RUTA
 @app.route("/webhook/", methods=["POST", "GET"])
 def webhook_whatsapp():
