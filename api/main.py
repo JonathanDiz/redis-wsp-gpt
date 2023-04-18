@@ -1,18 +1,9 @@
 #ChatBot inteligente con WhatsApp en Python
 from flask import Flask, jsonify, request
-from twilio.twiml.messaging_response import MessagingResponse
 import redis
 import datetime
 
 app = Flask(__name__)
-
-r = redis.Redis(host='localhost', port=6379, db=0)
-
-respuesta = MessagingResponse()
-respuesta.message(request.form.get("Body"))
-mensaje_enviado = respuesta.to_xml().decode("utf-8")
-r.hset("whatsapp_mensajes", "mensaje_enviado", mensaje_enviado)
-
 
 #RUTA DE HOME
 @app.route('/', methods=['GET', 'POST'])
