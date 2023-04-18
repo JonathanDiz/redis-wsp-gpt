@@ -21,7 +21,7 @@ def webhook_whatsapp():
     #SI HAY DATOS RECIBIDOS VIA GET
     if request.method == "GET":
         #SI EL TOKEN ES IGUAL AL QUE RECIBIMOS
-        if request.args.get('hub.verify_token') == "HolaNovato":
+        if request.args.get('hub.verify_token') == "HolaChatbotGPT":
             #ESCRIBIMOS EN EL NAVEGADOR EL VALOR DEL RETO RECIBIDO DESDE FACEBOOK
             return request.args.get('hub.challenge')
         else:
@@ -32,7 +32,7 @@ def webhook_whatsapp():
     #EXTRAEMOS EL NUMERO DE TELEFONO Y EL MANSAJE
     telefonoCliente=data['entry'][0]['changes'][0]['value']['messages'][0]['from']
     #EXTRAEMOS EL TELEFONO DEL CLIENTE
-    mensaje=data['entry'][0]['changes'][0]['value']['messages'][0]['text']['body']
+    mensaje=data['entry'][0]['changes'][0]['value']['messages'][0]['body']
     #EXTRAEMOS EL ID DE WHATSAPP DEL ARRAY
     idWA=data['entry'][0]['changes'][0]['value']['messages'][0]['id']
     #EXTRAEMOS EL TIEMPO DE WHATSAPP DEL ARRAY
@@ -56,14 +56,8 @@ def webhook_whatsapp():
           redis_db.set(idWA, 1)
           
           # Insertamos los datos en Redis
-          registro = {
-              'mensaje_recibido': mensaje,
-              'mensaje_enviado': respuesta,
-              'id_wa': idWA,
-              'timestamp_wa': timestamp,
-              'telefono_wa': telefonoCliente
-          }
-          redis_db.hmset(idWA, registro)
+          redis_db.hmset(idWA, {'mensaje_recibido': mensaje, 'mensaje_enviado': respuesta, 'id_wa': idWA, 'timestamp_wa': timestamp, 'telefono_wa': telefonoCliente})
+
       else:
           # Actualizamos la cantidad
           cantidad = int(cantidad) + 1
@@ -88,4 +82,4 @@ def enviar(telefonoRecibe,respuesta):
 
 #INICIAMSO FLASK
 if __name__ == "__main__":
-   app.run(debug=True)
+   app.run(debug=False)
