@@ -1,10 +1,14 @@
 from flask import Flask, jsonify, request
 import redis
+import os
 
 app = Flask(__name__)
 
+REDIS_HOST = os.environ.get('REDIS_HOST')
+REDIS_PORT = os.environ.get('REDIS_PORT')
+
 # CONECTAMOS A REDIS
-redis_db = redis.StrictRedis(host= redis.env.REDIS_HOST, port=redis.env.REDIS_PORT, db=0)
+redis_db = redis.StrictRedis(host=REDIS_HOST, port=REDIS_PORT, db=0)
 
 @app.route('/')
 def home():
@@ -70,10 +74,11 @@ def webhook_whatsapp():
         
 def enviar(telefonoRecibe,respuesta):
   from heyoo import WhatsApp
+  import os
   #TOKEN DE ACCESO DE FACEBOOK
-  token=app.env['TOKEN']
+  token= os.environ.get('TOKEN')
   #IDENTIFICADOR DE NÚMERO DE TELÉFONO
-  idNumeroTeléfono=app.env['ID_NUMERO_TELEFONO']
+  idNumeroTeléfono= os.environ.get('ID_NUMERO_TELEFONO')
   #INICIALIZAMOS ENVIO DE MENSAJES
   mensajeWa=WhatsApp(token,idNumeroTeléfono)
   telefonoRecibe=telefonoRecibe.replace("569","56")
